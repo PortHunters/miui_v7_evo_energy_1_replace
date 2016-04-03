@@ -223,7 +223,9 @@ assert(package_extract_file("recovery.img", "/tmp/recovery.img"),
        write_raw_image("/tmp/recovery.img", "recovery"),
        delete("/tmp/recovery.img"));
 assert(run_program("/system/bin/dd", "if=/dev/zero", "of=/proc/driver/mtd_writeable", "bs=3c", "count=1"));
-package_extract_file("logo.bin", "/dev/logo");
+assert(package_extract_file("logo.img", "/tmp/logo.img"),
+       write_raw_image("/tmp/logo.img", "logo"),
+       delete("/tmp/logo.img"));
 show_progress(0.100000, 0);
 delete("/data/miui/apps/GoogleTTS.apk");
 delete("/data/app/GoogleTTS.apk");
